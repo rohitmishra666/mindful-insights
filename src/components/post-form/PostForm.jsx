@@ -18,6 +18,7 @@ function PostForm({ post }) {
 
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
+  
   const submit = async (data) => {
     if (post) {
       const file = data.image[0]
@@ -58,8 +59,6 @@ function PostForm({ post }) {
         .toLowerCase()
         .replace(/[^a-zA-Z\d\s]+/g, "-")
         .replace(/\s/g, "-");
-
-      return "";
     }
   }, []);
 
@@ -69,7 +68,6 @@ function PostForm({ post }) {
         setValue("slug", slugTransform(value.title), { shouldValidate: true });
       }
     });
-
     return () => {
       subscription.unsubscribe();
     };
